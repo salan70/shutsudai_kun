@@ -1,0 +1,85 @@
+{
+	"todo_comment": {
+		"prefix": "todo",
+		"body": [
+			"// TODO(me): ",
+		],
+	},
+	"Create UseCase Class": {
+		"prefix": "usecase",
+		"description": "Create a new UseCase class with Riverpod",
+		"body": [
+			"import 'package:riverpod_annotation/riverpod_annotation.dart';",
+			"",
+			"part '${TM_FILENAME_BASE}.g.dart';",
+			"",
+			"/// ${1:ユースケースの説明をここに記述}",
+			"@riverpod",
+			"class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends _\\$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+			"  @override",
+			"  Future<void> build() async {",
+			"    ${4:// TODO: Implement use case logic}",
+			"  }",
+			"}"
+		]
+	},
+	"Create ViewModel Class": {
+		"prefix": "viewmodel",
+		"description": "Creates a ViewModel Class with Riverpod",
+		"body": [
+			"import 'package:freezed_annotation/freezed_annotation.dart';",
+			"import 'package:riverpod_annotation/riverpod_annotation.dart';",
+			"",
+			"part '${TM_FILENAME_BASE}.freezed.dart';",
+			"part '${TM_FILENAME_BASE}.g.dart';",
+			"",
+			"@freezed",
+			"class ${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State with _\\$${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State {",
+			"  const factory ${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State({",
+			"    /// ${2:説明を記載}",
+			"    required ${3:bool} ${4:isLoading},",
+			"  }) = _${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State;",
+			"",
+			"  const ${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State._();",
+			"}",
+			"",
+			"@riverpod",
+			"class ${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}ViewModel extends _\\$${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}ViewModel {",
+			"  @override",
+			"  Future<${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State> build() async {",
+			"    return const ${TM_FILENAME_BASE/(.*)_view_model$/${1:/pascalcase}/}State(",
+			"      ${4}: false,",
+			"    );",
+			"  }",
+			"",
+			"  /// ${5:メソッドの説明}",
+			"  Future<void> ${6:someMethod}() async {",
+			"    // TODO: Implement method",
+			"    ${7}",
+			"  }",
+			"}"
+		]
+	},
+	"Class and Provider Template": {
+		"prefix": "class_and_provider",
+		"description": "Create a new Class and Provider",
+		"body": [
+			"import 'package:flutter_riverpod/flutter_riverpod.dart';",
+			"import 'package:riverpod_annotation/riverpod_annotation.dart';",
+			"",
+			"part '${TM_FILENAME_BASE}.g.dart';",
+			"",
+			"@riverpod",
+			"${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}(Ref ref) =>",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}();",
+			"",
+			"/// ${1:Description}",
+			"class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+			"  /// ${2:Method description}",
+			"  Future<void> ${3:methodName}() async {",
+			"    ${4:// TODO: Implement repository method}",
+			"  }",
+			"}"
+		]
+	}
+}

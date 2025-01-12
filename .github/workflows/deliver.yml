@@ -1,0 +1,101 @@
+name: deliver
+
+on:
+  push:
+    tags:
+      - v*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Import Provisioning Profile
+        env:
+          IOS_PROVISIONING_PROFILE_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_BASE64 }}
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo -n "$IOS_PROVISIONING_PROFILE_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/distribution.mobileprovision
+
+      - name: Import Certificate
+        env:
+          IOS_CERTIFICATE_P12_BASE64: ${{ secrets.IOS_CERTIFICATE_P12_BASE64 }}
+          IOS_CERTIFICATE_P12_P12_PASSWORD: ${{ secrets.IOS_CERTIFICATE_P12_PASSWORD }}
+          IOS_KEYCHAIN_PASSWORD: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
+        run: |
+          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+
+          # import certificate from secrets
+          echo -n "$IOS_CERTIFICATE_P12_BASE64" | base64 --decode --output $CERTIFICATE_PATH
+
+          # create temporary keychain
+          security create-keychain -p "$IOS_KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$IOS_KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # import certificate to keychain
+          security import $CERTIFICATE_PATH -P "$IOS_CERTIFICATE_P12_P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
+      - name: Setup Flutter
+        id: setup-flutter
+        uses: ./.github/actions/setup_flutter
+
+      - name: Create dot env file
+        shell: bash
+        working-directory: packages/app
+        run: |
+          touch .env
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+          echo "SUPABASE_API_KEY=${{ secrets.SUPABASE_API_KEY }}" >> .env
+
+      - name: pod install
+        run: |
+          cd packages/app
+          flutter pub get
+          cd ios
+          rm -rf Podfile.lock
+          pod install
+
+      - name: Build ipa
+        id: build
+        run: |
+          cd packages/app
+          flutter build ipa --release --dart-define-from-file=dart_defines/prod.json --export-options-plist=ios/ExportOptions.plist
+
+      - name: Detect path for ipa file
+        run: |
+          cd packages/app
+          if [ ! -d "build/ios/ipa" ]; then
+            echo "build/ios/ipa directory does not exist."
+            exit 1
+          fi
+          IPA_PATH=$(find build/ios/ipa -type f -name '*.ipa')
+          if [ -z "$IPA_PATH" ]; then
+            echo "No .ipa file found."
+            exit 1
+          fi
+          echo "IPA_PATH=$IPA_PATH" >> $GITHUB_ENV
+          echo $IPA_PATH
+
+      - name: Upload to App Store Connect
+        id: upload
+        env:
+          APPLE_APPLE_ID: ${{ secrets.APPLE_APPLE_ID }}
+          APPLE_APP_PASS: ${{ secrets.APPLE_APP_PASS }}
+        run: |
+          cd packages/app
+          xcrun altool --upload-app --type ios -f "$IPA_PATH" -u "$APPLE_APPLE_ID" -p "$APPLE_APP_PASS"
+
+      - name: Upload dsym artifacts to Firebase Crashlytics
+        run: |
+          cd packages/app
+          ios/Pods/FirebaseCrashlytics/upload-symbols -gsp ios/GoogleService-Info.plist -p ios build/ios/archive/Runner.xcarchive/dSYMs

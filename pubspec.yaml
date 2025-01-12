@@ -1,19 +1,7 @@
-name: shutsudai_kun
-description: "A new Flutter project."
-publish_to: 'none'
-version: 0.1.0
+name: shutsudai_kun_workspace
+publish_to: none
 
 environment:
-  sdk: ^3.5.4
-
-dependencies:
-  flutter:
-    sdk: flutter
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^4.0.0
-
-flutter:
-  uses-material-design: true
+  sdk: ^3.6.0
+workspace:
+  - packages/app

@@ -1,0 +1,80 @@
+name: check
+
+on:
+  push:
+    branches:
+      - develop
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      matrix:
+        package_path:
+          - packages/app
+          # - packages/common
+          # - packages/data
+          # - packages/dependency_provider
+          # - packages/domain
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Flutter
+        id: setup-flutter
+        uses: ./.github/actions/setup_flutter
+
+      - name: Create empty dot env file
+        shell: bash
+        working-directory: packages/app
+        run: touch .env
+
+      - name: Run analyze
+        run: flutter analyze
+        working-directory: ${{ matrix.package_path }}
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      matrix:
+        package_path:
+          - packages/app
+          # - packages/common
+          # - packages/data
+          # - packages/dependency_provider
+          # - packages/domain
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        id: setup-flutter
+        uses: ./.github/actions/setup_flutter
+
+      - name: Create empty dot env file
+        shell: bash
+        working-directory: packages/app
+        run: touch .env
+
+      - name: Run test
+        run: flutter test
+        working-directory: ${{ matrix.package_path }}
