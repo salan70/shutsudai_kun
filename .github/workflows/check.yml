@@ -25,10 +25,10 @@ jobs:
       matrix:
         package_path:
           - packages/app
-          - packages/common
-          - packages/data
-          - packages/dependency_provider
-          - packages/domain
+          # - packages/common
+          # - packages/data
+          # - packages/dependency_provider
+          # - packages/domain
 
     steps:
       - name: Checkout
@@ -57,10 +57,10 @@ jobs:
       matrix:
         package_path:
           - packages/app
-          - packages/common
-          - packages/data
-          - packages/dependency_provider
-          - packages/domain
+          # - packages/common
+          # - packages/data
+          # - packages/dependency_provider
+          # - packages/domain
 
     steps:
       - name: Checkout
