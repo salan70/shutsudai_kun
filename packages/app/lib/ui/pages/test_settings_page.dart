@@ -12,10 +12,10 @@ class TestSettingsPage extends StatefulWidget {
 
 class _TestSettingsPageState extends State<TestSettingsPage> {
   String _selectedRange = '番号';
-  int _startNumber = 1;
-  int _endNumber = 10;
-  final int _questionCount = 10;
-  int _cheerInterval = 5;
+  // int _startNumber = 1;
+  // int _endNumber = 10;
+  // final int _questionCount = 10;
+  // int _cheerInterval = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _TestSettingsPageState extends State<TestSettingsPage> {
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
                   setState(() {
-                    _startNumber = int.tryParse(value) ?? 1;
+                    // _startNumber = int.tryParse(value) ?? 1;
                   });
                 },
               ),
@@ -60,7 +60,7 @@ class _TestSettingsPageState extends State<TestSettingsPage> {
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
                   setState(() {
-                    _endNumber = int.tryParse(value) ?? 10;
+                    // _endNumber = int.tryParse(value) ?? 10;
                   });
                 },
               ),
@@ -71,7 +71,7 @@ class _TestSettingsPageState extends State<TestSettingsPage> {
               keyboardType: TextInputType.number,
               onChanged: (value) {
                 setState(() {
-                  _cheerInterval = int.tryParse(value) ?? 5;
+                  // _cheerInterval = int.tryParse(value) ?? 5;
                 });
               },
             ),

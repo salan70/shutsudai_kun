@@ -12,7 +12,7 @@ class CheerAddPage extends StatefulWidget {
 
 class _CheerAddPageState extends State<CheerAddPage> {
   final _formKey = GlobalKey<FormState>();
-  String _comment = '';
+  // String _comment = '';
   String _timing = '正解時';
 
   @override
@@ -30,7 +30,7 @@ class _CheerAddPageState extends State<CheerAddPage> {
                 border: OutlineInputBorder(),
               ),
               maxLines: 3,
-              onSaved: (value) => _comment = value ?? '',
+              // onSaved: (value) => _comment = value ?? '',
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'コメントを入力してください';

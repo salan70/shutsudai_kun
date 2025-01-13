@@ -10,10 +10,10 @@ class TestSettingsPage extends StatefulWidget {
 
 class _TestSettingsPageState extends State<TestSettingsPage> {
   String _selectedRange = '番号';
-  int _startNumber = 1;
-  int _endNumber = 10;
-  int _questionCount = 10;
-  int _cheerInterval = 5;
+  // int _startNumber = 1;
+  // int _endNumber = 10;
+  // int _questionCount = 10;
+  // int _cheerInterval = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -52,18 +52,18 @@ class _TestSettingsPageState extends State<TestSettingsPage> {
                 decoration: const InputDecoration(labelText: '開始番号'),
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
-                  setState(() {
-                    _startNumber = int.tryParse(value) ?? 1;
-                  });
+                  // setState(() {
+                  //   _startNumber = int.tryParse(value) ?? 1;
+                  // });
                 },
               ),
               TextField(
                 decoration: const InputDecoration(labelText: '終了番号'),
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
-                  setState(() {
-                    _endNumber = int.tryParse(value) ?? 10;
-                  });
+                  // setState(() {
+                  //   _endNumber = int.tryParse(value) ?? 10;
+                  // });
                 },
               ),
             ],
@@ -72,18 +72,18 @@ class _TestSettingsPageState extends State<TestSettingsPage> {
               decoration: const InputDecoration(labelText: '問題数'),
               keyboardType: TextInputType.number,
               onChanged: (value) {
-                setState(() {
-                  _questionCount = int.tryParse(value) ?? 10;
-                });
+                // setState(() {
+                //   _questionCount = int.tryParse(value) ?? 10;
+                // });
               },
             ),
             TextField(
               decoration: const InputDecoration(labelText: '応援表示頻度'),
               keyboardType: TextInputType.number,
               onChanged: (value) {
-                setState(() {
-                  _cheerInterval = int.tryParse(value) ?? 5;
-                });
+                // setState(() {
+                //   _cheerInterval = int.tryParse(value) ?? 5;
+                // });
               },
             ),
             const Spacer(),

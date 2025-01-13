@@ -10,10 +10,10 @@ class WordAddPage extends StatefulWidget {
 
 class _WordAddPageState extends State<WordAddPage> {
   final _formKey = GlobalKey<FormState>();
-  String _word = '';
-  String _meaning = '';
+  // String _word = '';
+  // String _meaning = '';
   String _partOfSpeech = '名詞';
-  String _example = '';
+  // String _example = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _WordAddPageState extends State<WordAddPage> {
                 labelText: '英単語',
                 border: OutlineInputBorder(),
               ),
-              onSaved: (value) => _word = value ?? '',
+              // onSaved: (value) => _word = value ?? '',
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return '英単語を入力してください';
@@ -49,7 +49,7 @@ class _WordAddPageState extends State<WordAddPage> {
                 labelText: '日本語訳',
                 border: OutlineInputBorder(),
               ),
-              onSaved: (value) => _meaning = value ?? '',
+              // onSaved: (value) => _meaning = value ?? '',
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return '日本語訳を入力してください';
@@ -86,7 +86,7 @@ class _WordAddPageState extends State<WordAddPage> {
                 border: OutlineInputBorder(),
               ),
               maxLines: 3,
-              onSaved: (value) => _example = value ?? '',
+              // onSaved: (value) => _example = value ?? '',
             ),
             const SizedBox(height: 32),
             Row(
