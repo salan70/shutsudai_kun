@@ -72,7 +72,7 @@ class _CheerAddPageState extends State<CheerAddPage> {
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
                       _formKey.currentState?.save();
-                      // TODO: 応援コメントを保存する処理
+                      // TODO(me) : 応援コメントを保存する処理
                       context.push('/cheers');
                     }
                   },

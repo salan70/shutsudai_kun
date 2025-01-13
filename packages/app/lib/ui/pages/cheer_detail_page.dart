@@ -26,7 +26,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
   @override
   void initState() {
     super.initState();
-    // TODO: 応援コメントデータの取得
+    // TODO(me) : 応援コメントデータの取得
     _comment = 'サンプル応援コメント';
     _timing = '正解時';
   }
@@ -57,7 +57,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // TODO: 応援コメントを削除する処理
+                        // TODO(me) : 応援コメントを削除する処理
                         context.push('/cheers');
                       },
                       child: const Text('削除'),
@@ -138,7 +138,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         _formKey.currentState?.save();
-                        // TODO: 応援コメントを更新する処理
+                        // TODO(me) : 応援コメントを更新する処理
                         setState(() => _isEditing = false);
                       }
                     },

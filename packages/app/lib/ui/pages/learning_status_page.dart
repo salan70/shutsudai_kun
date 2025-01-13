@@ -30,7 +30,7 @@ class LearningStatusPage extends StatelessWidget {
                       Expanded(
                         child: TextButton.icon(
                           onPressed: () {
-                            // TODO: 開始日選択
+                            // TODO(me) : 開始日選択
                           },
                           icon: const Icon(Icons.calendar_today),
                           label: const Text('2024/01/01'),
@@ -40,7 +40,7 @@ class LearningStatusPage extends StatelessWidget {
                       Expanded(
                         child: TextButton.icon(
                           onPressed: () {
-                            // TODO: 終了日選択
+                            // TODO(me) : 終了日選択
                           },
                           icon: const Icon(Icons.calendar_today),
                           label: const Text('2024/01/31'),
@@ -129,7 +129,7 @@ class LearningStatusPage extends StatelessWidget {
                       ),
                       TextButton.icon(
                         onPressed: () {
-                          // TODO: CSVエクスポート
+                          // TODO(me) : CSVエクスポート
                         },
                         icon: const Icon(Icons.download),
                         label: const Text('CSVエクスポート'),
