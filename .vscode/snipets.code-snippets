@@ -2,7 +2,7 @@
 	"todo_comment": {
 		"prefix": "todo",
 		"body": [
-			"// TODO(me): ",
+			"// TODO(me):  ",
 		],
 	},
 	"Create UseCase Class": {

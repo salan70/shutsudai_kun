@@ -13,7 +13,7 @@ class TestPage extends StatelessWidget {
         title: 'テスト',
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,7 +24,7 @@ class TestPage extends StatelessWidget {
             const SizedBox(height: 32),
             const Card(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16),
                 child: Text(
                   'Sample Word',
                   style: TextStyle(fontSize: 32),

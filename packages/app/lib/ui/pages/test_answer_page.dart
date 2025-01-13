@@ -26,13 +26,13 @@ class _TestAnswerPageState extends State<TestAnswerPage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Card(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16),
                 child: Column(
                   children: [
                     Text(
@@ -72,7 +72,7 @@ class _TestAnswerPageState extends State<TestAnswerPage> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
-                        _isCorrect == true ? Colors.green : Colors.grey,
+                        _isCorrect ?? false ? Colors.green : Colors.grey,
                   ),
                   child: const Text('正解'),
                 ),

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class WordDetailPage extends StatefulWidget {
-  final String wordId;
-
   const WordDetailPage({
-    super.key,
     required this.wordId,
+    super.key,
   });
+  final String wordId;
 
   @override
   State<WordDetailPage> createState() => _WordDetailPageState();
@@ -24,7 +23,7 @@ class _WordDetailPageState extends State<WordDetailPage> {
   @override
   void initState() {
     super.initState();
-    // TODO(me) : 単語データの取得
+    // TODO(me):  単語データの取得
     _word = 'Sample Word';
     _meaning = 'サンプル単語';
     _partOfSpeech = '名詞';
@@ -49,7 +48,7 @@ class _WordDetailPageState extends State<WordDetailPage> {
           IconButton(
             icon: const Icon(Icons.delete),
             onPressed: () {
-              showDialog(
+              showDialog<void>(
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('確認'),
@@ -61,7 +60,7 @@ class _WordDetailPageState extends State<WordDetailPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // TODO(me) : 単語を削除する処理
+                        // TODO(me):  単語を削除する処理
                         context.push('/words');
                       },
                       child: const Text('削除'),
@@ -76,7 +75,7 @@ class _WordDetailPageState extends State<WordDetailPage> {
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           children: [
             _buildField(
               label: '英単語',
@@ -138,7 +137,7 @@ class _WordDetailPageState extends State<WordDetailPage> {
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         _formKey.currentState?.save();
-                        // TODO(me) : 単語を更新する処理
+                        // TODO(me):  単語を更新する処理
                         setState(() => _isEditing = false);
                       }
                     },

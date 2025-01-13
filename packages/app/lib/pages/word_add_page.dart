@@ -28,7 +28,7 @@ class _WordAddPageState extends State<WordAddPage> {
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           children: [
             TextFormField(
               decoration: const InputDecoration(
@@ -100,7 +100,7 @@ class _WordAddPageState extends State<WordAddPage> {
                   onPressed: () {
                     if (_formKey.currentState?.validate() ?? false) {
                       _formKey.currentState?.save();
-                      // TODO(me) : 単語を保存する処理
+                      // TODO(me): 単語を保存する処理
                       context.push('/words');
                     }
                   },

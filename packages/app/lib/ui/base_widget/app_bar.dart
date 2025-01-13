@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
-  final List<Widget>? actions;
-  final bool showBackButton;
-
   const CommonAppBar({
-    super.key,
     required this.title,
+    super.key,
     this.actions,
     this.showBackButton = true,
   });
+  final String title;
+  final List<Widget>? actions;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {

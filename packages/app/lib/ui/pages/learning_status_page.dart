@@ -12,11 +12,11 @@ class LearningStatusPage extends StatelessWidget {
         title: '学習状況',
       ),
       body: ListView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         children: [
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -30,7 +30,7 @@ class LearningStatusPage extends StatelessWidget {
                       Expanded(
                         child: TextButton.icon(
                           onPressed: () {
-                            // TODO(me) : 開始日選択
+                            // TODO(me): 開始日選択
                           },
                           icon: const Icon(Icons.calendar_today),
                           label: const Text('2024/01/01'),
@@ -40,7 +40,7 @@ class LearningStatusPage extends StatelessWidget {
                       Expanded(
                         child: TextButton.icon(
                           onPressed: () {
-                            // TODO(me) : 終了日選択
+                            // TODO(me): 終了日選択
                           },
                           icon: const Icon(Icons.calendar_today),
                           label: const Text('2024/01/31'),
@@ -55,7 +55,7 @@ class LearningStatusPage extends StatelessWidget {
           const SizedBox(height: 16),
           const Card(
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -76,7 +76,9 @@ class LearningStatusPage extends StatelessWidget {
                           Text(
                             '12:34',
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -89,7 +91,9 @@ class LearningStatusPage extends StatelessWidget {
                           Text(
                             '100',
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -102,7 +106,9 @@ class LearningStatusPage extends StatelessWidget {
                           Text(
                             '80%',
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -115,7 +121,7 @@ class LearningStatusPage extends StatelessWidget {
           const SizedBox(height: 16),
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,11 +131,13 @@ class LearningStatusPage extends StatelessWidget {
                       const Text(
                         '詳細データ',
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       TextButton.icon(
                         onPressed: () {
-                          // TODO(me) : CSVエクスポート
+                          // TODO(me): CSVエクスポート
                         },
                         icon: const Icon(Icons.download),
                         label: const Text('CSVエクスポート'),

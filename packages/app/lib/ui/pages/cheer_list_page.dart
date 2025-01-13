@@ -21,7 +21,7 @@ class CheerListPage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: DropdownButton<String>(
               isExpanded: true,
               value: '全て',
@@ -33,7 +33,7 @@ class CheerListPage extends StatelessWidget {
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                // TODO(me) : フィルター処理
+                // TODO(me): フィルター処理
               },
             ),
           ),
@@ -43,7 +43,7 @@ class CheerListPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text('応援コメント ${index + 1}'),
-                  subtitle: Text('表示タイミング: ${index % 2 == 0 ? "正解時" : "不正解時"}'),
+                  subtitle: Text('表示タイミング: ${index.isEven ? "正解時" : "不正解時"}'),
                   onTap: () => context.push('/cheers/${index + 1}'),
                 );
               },

@@ -4,12 +4,11 @@ import 'package:go_router/go_router.dart';
 import '../base_widget/app_bar.dart';
 
 class CheerDetailPage extends StatefulWidget {
-  final String cheerId;
-
   const CheerDetailPage({
-    super.key,
     required this.cheerId,
+    super.key,
   });
+  final String cheerId;
 
   @override
   State<CheerDetailPage> createState() => _CheerDetailPageState();
@@ -26,7 +25,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
   @override
   void initState() {
     super.initState();
-    // TODO(me) : 応援コメントデータの取得
+    // TODO(me):  応援コメントデータの取得
     _comment = 'サンプル応援コメント';
     _timing = '正解時';
   }
@@ -45,7 +44,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
           IconButton(
             icon: const Icon(Icons.delete),
             onPressed: () {
-              showDialog(
+              showDialog<void>(
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('確認'),
@@ -57,7 +56,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // TODO(me) : 応援コメントを削除する処理
+                        // TODO(me):  応援コメントを削除する処理
                         context.push('/cheers');
                       },
                       child: const Text('削除'),
@@ -72,7 +71,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
       body: Form(
         key: _formKey,
         child: ListView(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           children: [
             TextFormField(
               decoration: const InputDecoration(
@@ -123,8 +122,8 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
                 enabled: false,
               ),
             const SizedBox(height: 16),
-            Text('作成日時: ${_createdAt.toString()}'),
-            Text('更新日時: ${_updatedAt.toString()}'),
+            Text('作成日時: $_createdAt'),
+            Text('更新日時: $_updatedAt'),
             if (_isEditing) ...[
               const SizedBox(height: 32),
               Row(
@@ -138,7 +137,7 @@ class _CheerDetailPageState extends State<CheerDetailPage> {
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         _formKey.currentState?.save();
-                        // TODO(me) : 応援コメントを更新する処理
+                        // TODO(me):  応援コメントを更新する処理
                         setState(() => _isEditing = false);
                       }
                     },
