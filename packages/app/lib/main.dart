@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'core/router/router.dart';
+import 'core/supabase/client.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Supabaseの初期化
+  await initializeSupabase();
+
   runApp(const MyApp());
 }
 
