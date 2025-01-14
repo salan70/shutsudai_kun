@@ -1,19 +1,41 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.27.1",
-  "search.exclude": {
-    "**/.fvm": true,
-    "**/*.freezed.dart": true,
-    "**/*.g.dart": true,
-    "**/*.gr.dart": true,
-    "**/*.mocks.dart": true
-  },
-  "files.watcherExclude": {
-    "**/.fvm": true
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "cSpell.words": [
     "supabase",
     "firestore"
   ],
+  "dart.flutterSdkPath": ".fvm/versions/3.27.1",
   "dart.projectSearchDepth": 4,
-  "dart.runPubGetOnPubspecChanges": "never"
+  "dart.runPubGetOnPubspecChanges": "never",
+  "deno.enablePaths": [
+    "supabase/functions"
+  ],
+  "deno.lint": true,
+  "deno.unstable": [
+    "bare-node-builtins",
+    "byonm",
+    "sloppy-imports",
+    "unsafe-proto",
+    "webgpu",
+    "broadcast-channel",
+    "worker-options",
+    "cron",
+    "kv",
+    "ffi",
+    "fs",
+    "http",
+    "net"
+  ],
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "search.exclude": {
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/*.gr.dart": true,
+    "**/*.mocks.dart": true,
+    "**/.fvm": true
+  }
 }
